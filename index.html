@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <title>Герои сервиса · Тиндер-тренажёр</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: radial-gradient(circle at 20% 30%, #1f1b3a, #0d0b1a 80%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .tinder-box {
+            max-width: 520px;
+            width: 100%;
+            background: rgba(22, 18, 42, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 56px;
+            padding: 24px 20px 28px;
+            box-shadow: 0 40px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(101, 88, 177, 0.4), 0 0 40px rgba(101, 88, 177, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tinder-box::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -20%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(0, 179, 136, 0.08), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .tinder-box::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -10%;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, rgba(101, 88, 177, 0.1), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            padding: 0 4px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-header h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(145deg, #b3a6ff, #6dd5ed, #00B388);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+            text-shadow: 0 0 30px rgba(101, 88, 177, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hero-header h2 .sparkle {
+            font-size: 1.6rem;
+            animation: pulse-sparkle 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-sparkle {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.2) rotate(10deg); }
+        }
+
+        .subhead {
+            font-size: 0.9rem;
+            color: #c2bae6;
+            padding: 0 6px 12px 6px;
+            border-bottom: 1px solid rgba(101, 88, 177, 0.3);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+
+        .subhead .counter {
+            background: linear-gradient(145deg, rgba(101, 88, 177, 0.4), rgba(0, 179, 136, 0.2));
+            padding: 2px 16px;
+            border-radius: 60px;
+            font-weight: 600;
+            color: #e4deff;
+            border: 1px solid rgba(101, 88, 177, 0.3);
+            box-shadow: 0 0 20px rgba(101, 88, 177, 0.1);
+        }
+
+        .card-flash {
+            background: linear-gradient(145deg, #221f3e, #1a1732);
+            border-radius: 40px;
+            padding: 28px 24px 24px;
+            margin: 16px 0 20px;
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(101, 88, 177, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            transition: all 0.25s ease;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .card-flash::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(0, 132, 212, 0.05), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .card-flash .tag {
+            display: inline-block;
+            background: linear-gradient(145deg, rgba(101, 88, 177, 0.5), rgba(0, 179, 136, 0.2));
+            color: #d4ccff;
+            font-weight: 600;
+            font-size: 0.7rem;
+            padding: 6px 18px;
+            border-radius: 60px;
+            letter-spacing: 0.3px;
+            width: fit-content;
+            margin-bottom: 14px;
+            border: 1px solid rgba(101, 88, 177, 0.4);
+            box-shadow: 0 0 20px rgba(101, 88, 177, 0.08);
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-flash .statement {
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: 1.3;
+            color: #f5f0ff;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-flash .statement i {
+            font-style: normal;
+            background: linear-gradient(145deg, #6dd5ed, #b3a6ff, #00B388);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-right: 6px;
+            font-size: 1.8rem;
+        }
+
+        .card-flash .illustration {
+            position: absolute;
+            bottom: 10px;
+            right: 14px;
+            font-size: 3.2rem;
+            opacity: 0.2;
+            filter: blur(1px);
+            transform: rotate(-6deg);
+            pointer-events: none;
+            z-index: 1;
+            transition: 0.3s;
+        }
+
+        .card-flash:hover .illustration {
+            opacity: 0.3;
+            transform: rotate(-3deg) scale(1.05);
+        }
+
+        .action-row {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 8px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+
+        .choice-btn {
+            border: none;
+            padding: 16px 28px;
+            border-radius: 80px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            flex: 1 1 auto;
+            justify-content: center;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .choice-btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), transparent 60%);
+            pointer-events: none;
+        }
+
+        .choice-btn.yes {
+            background: linear-gradient(145deg, #00B388, #00a07a);
+            box-shadow: 0 12px 28px rgba(0, 179, 136, 0.35), 0 0 0 1px rgba(0, 179, 136, 0.3);
+        }
+        .choice-btn.yes:hover:not(:disabled) {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 18px 36px rgba(0, 179, 136, 0.5), 0 0 0 1px #00B388;
+        }
+
+        .choice-btn.no {
+            background: linear-gradient(145deg, #ff5e6b, #e84a57);
+            box-shadow: 0 12px 28px rgba(255, 94, 107, 0.3), 0 0 0 1px rgba(255, 94, 107, 0.3);
+        }
+        .choice-btn.no:hover:not(:disabled) {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 18px 36px rgba(255, 94, 107, 0.45), 0 0 0 1px #ff5e6b;
+        }
+
+        .choice-btn:disabled {
+            opacity: 0.35;
+            transform: scale(0.96);
+            cursor: default;
+            filter: grayscale(0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .choice-btn .emoji-big {
+            font-size: 1.6rem;
+            line-height: 1;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        .feedback-bubble {
+            margin: 18px 0 12px;
+            padding: 16px 20px;
+            border-radius: 60px;
+            background: rgba(26, 22, 50, 0.8);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 1rem;
+            font-weight: 500;
+            color: #e8e2ff;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            min-height: 68px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .feedback-bubble .fb-icon {
+            font-size: 2.4rem;
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
+        }
+
+        .feedback-bubble.correct {
+            background: linear-gradient(145deg, rgba(0, 179, 136, 0.2), rgba(0, 179, 136, 0.05));
+            border-color: #00B388;
+            box-shadow: 0 6px 24px rgba(0, 179, 136, 0.12), 0 0 0 1px #00B388;
+        }
+
+        .feedback-bubble.wrong {
+            background: linear-gradient(145deg, rgba(255, 94, 107, 0.15), rgba(255, 94, 107, 0.03));
+            border-color: #ff5e6b;
+            box-shadow: 0 6px 24px rgba(255, 94, 107, 0.1), 0 0 0 1px #ff5e6b;
+        }
+
+        .next-wrap {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 6px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .next-btn {
+            background: linear-gradient(145deg, #6558B1, #4f44a0);
+            border: none;
+            border-radius: 60px;
+            padding: 14px 32px;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            box-shadow: 0 10px 24px rgba(101, 88, 177, 0.3), 0 0 0 1px rgba(101, 88, 177, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: 0.3px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .next-btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), transparent 60%);
+            pointer-events: none;
+        }
+
+        .next-btn:hover:not(:disabled) {
+            transform: scale(1.04) translateY(-2px);
+            box-shadow: 0 16px 32px rgba(101, 88, 177, 0.5), 0 0 0 1px #6558B1;
+            background: linear-gradient(145deg, #7a6dc9, #5a4eb0);
+        }
+
+        .next-btn:disabled {
+            opacity: 0.25;
+            cursor: default;
+            transform: scale(0.96);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .next-btn .arrow {
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 460px) {
+            .tinder-box {
+                padding: 16px 12px 20px;
+                border-radius: 32px;
+            }
+            .card-flash {
+                padding: 20px 16px;
+                min-height: 170px;
+            }
+            .card-flash .statement {
+                font-size: 1.2rem;
+            }
+            .choice-btn {
+                padding: 14px 16px;
+                font-size: 0.95rem;
+                gap: 8px;
+                flex: 1;
+            }
+            .hero-header h2 {
+                font-size: 1.3rem;
+            }
+            .feedback-bubble {
+                font-size: 0.9rem;
+                padding: 14px 16px;
+            }
+            .card-flash .illustration {
+                font-size: 2.4rem;
+                bottom: 6px;
+                right: 10px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .action-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .choice-btn {
+                width: 100%;
+            }
+        }
+
+        .glow-text {
+            background: linear-gradient(145deg, #6dd5ed, #b3a6ff, #00B388);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+
+        .float-icon {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+
+<div class="tinder-box" id="app">
+
+    <div class="hero-header">
+        <h2>
+            <span class="sparkle">✨</span> Герои сервиса
+        </h2>
+    </div>
+
+    <div class="subhead">
+        <span>👋 Директор, подтверди или опровергни</span>
+        <span class="counter" id="progressCounter">1 / 8</span>
+    </div>
+
+    <div class="card-flash" id="cardFlash">
+        <div class="tag" id="topicTag">🎯 Роль директора</div>
+        <div class="statement" id="statementText">
+            <i>“</i>Директор должен сохранять спокойствие в кризис<i>”</i>
+        </div>
+        <div class="illustration" id="illustrationEmoji">🧠</div>
+    </div>
+
+    <div class="action-row">
+        <button class="choice-btn no" id="btnNo">
+            <span class="emoji-big">✖</span> Нет
+        </button>
+        <button class="choice-btn yes" id="btnYes">
+            <span class="emoji-big">✔</span> Да
+        </button>
+    </div>
+
+    <div class="feedback-bubble" id="feedbackBubble">
+        <span class="fb-icon" id="fbIcon">💡</span>
+        <span id="fbText">Нажми Да или Нет</span>
+    </div>
+
+    <div class="next-wrap">
+        <button class="next-btn" id="nextBtn" disabled>
+            <span class="arrow">➜</span> Следующий
+        </button>
+    </div>
+</div>
+
+<script>
+    (function() {
+        "use strict";
+
+        // ---------- НЕОЧЕВИДНЫЕ УТВЕРЖДЕНИЯ + ИЛЛЮСТРАЦИИ ----------
+        const statements = [
+            {
+                id: 0,
+                text: 'Директор должен всегда сохранять идеальное спокойствие, даже если гость оскорбляет персонал.',
+                correct: false,
+                topic: '🎯 Роль директора',
+                explanation: 'Не совсем. Сохранять спокойствие важно, но директор обязан защищать команду и не допускать оскорблений. Спокойствие ≠ бездействие.',
+                emoji: '🧠'
+            },
+            {
+                id: 1,
+                text: 'Если гость жалуется на холодную еду, лучше всего сразу предложить десерт в качестве извинения.',
+                correct: false,
+                topic: '🍽️ Решение сложных ситуаций',
+                explanation: 'Нет. Сначала нужно выслушать, извиниться и предложить решение по ситуации (заменить блюдо, а не просто десерт). Десерт — не универсальный ответ.',
+                emoji: '🍰'
+            },
+            {
+                id: 2,
+                text: 'Чистота в туалете влияет на восприятие качества еды больше, чем скорость обслуживания.',
+                correct: true,
+                topic: '🧼 Факторы влияния',
+                explanation: 'Верно! Грязный туалет может перечеркнуть впечатление от еды, даже если скорость была отличной. Это психологический фактор.',
+                emoji: '🚽'
+            },
+            {
+                id: 3,
+                text: 'В кризисной ситуации директор должен немедленно признать вину компании, чтобы успокоить гостя.',
+                correct: false,
+                topic: '🤝 Решение сложных ситуаций',
+                explanation: 'Неверно. Признавать вину компании не рекомендуется. Важно показать готовность решить проблему, не беря на себя юридическую ответственность.',
+                emoji: '⚖️'
+            },
+            {
+                id: 4,
+                text: 'Гость, который часто заказывает одно и то же блюдо, менее требователен к сервису, чем новый гость.',
+                correct: false,
+                topic: '📊 Профиль гостя',
+                explanation: 'Ошибочно. Постоянные гости часто более требовательны, так как знают стандарты заведения. Их лояльность нужно поддерживать особенно тщательно.',
+                emoji: '🔁'
+            },
+            {
+                id: 5,
+                text: 'Если гость просит менеджера, директор должен подключиться к диалогу, даже если менеджер уже решает вопрос.',
+                correct: false,
+                topic: '🎯 Роль директора',
+                explanation: 'Нет. Это подрывает авторитет менеджера. Директор подключается только если менеджер не справляется или гость настаивает.',
+                emoji: '👤'
+            },
+            {
+                id: 6,
+                text: 'Скорость обслуживания — более важный фактор, чем точность заказа, в часы-пик.',
+                correct: false,
+                topic: '⏱️ Факторы влияния',
+                explanation: 'Неверно. Точность всегда важнее. Ошибка в заказе в часы-пик создаёт больше негатива, чем небольшая задержка.',
+                emoji: '⏳'
+            },
+            {
+                id: 7,
+                text: 'Гостеприимство может компенсировать недостаток чистоты, если персонал очень дружелюбен.',
+                correct: false,
+                topic: '😊 Факторы влияния',
+                explanation: 'Нет. Чистота — базовый фактор. Даже супер-дружелюбие не спасёт, если в зале грязно. Гость запоминает чистоту в первую очередь.',
+                emoji: '🧹'
+            }
+        ];
+
+        // ---------- СОСТОЯНИЕ ----------
+        let currentIndex = 0;
+        let isAnswered = false;
+        let totalCount = statements.length;
+
+        // DOM
+        const statementText = document.getElementById('statementText');
+        const topicTag = document.getElementById('topicTag');
+        const progressCounter = document.getElementById('progressCounter');
+        const btnYes = document.getElementById('btnYes');
+        const btnNo = document.getElementById('btnNo');
+        const nextBtn = document.getElementById('nextBtn');
+        const fbIcon = document.getElementById('fbIcon');
+        const fbText = document.getElementById('fbText');
+        const feedbackBubble = document.getElementById('feedbackBubble');
+        const cardFlash = document.getElementById('cardFlash');
+        const illustrationEmoji = document.getElementById('illustrationEmoji');
+
+        function renderCard() {
+            const st = statements[currentIndex];
+            if (!st) return;
+
+            statementText.innerHTML = `<i>“</i>${st.text}<i>”</i>`;
+            topicTag.textContent = st.topic;
+            progressCounter.textContent = `${currentIndex + 1} / ${totalCount}`;
+            illustrationEmoji.textContent = st.emoji || '✨';
+
+            isAnswered = false;
+            btnYes.disabled = false;
+            btnNo.disabled = false;
+            nextBtn.disabled = true;
+
+            feedbackBubble.className = 'feedback-bubble';
+            fbIcon.textContent = '💡';
+            fbText.textContent = 'Нажми Да или Нет';
+
+            cardFlash.style.opacity = '1';
+            cardFlash.style.transform = 'scale(1)';
+        }
+
+        function handleChoice(userSaysCorrect) {
+            if (isAnswered) return;
+
+            const st = statements[currentIndex];
+            const isCorrect = (userSaysCorrect === st.correct);
+
+            btnYes.disabled = true;
+            btnNo.disabled = true;
+            isAnswered = true;
+            nextBtn.disabled = false;
+
+            feedbackBubble.className = 'feedback-bubble';
+            if (isCorrect) {
+                feedbackBubble.classList.add('correct');
+                fbIcon.textContent = '🌟';
+                fbText.textContent = `✅ Верно! ${st.explanation}`;
+            } else {
+                feedbackBubble.classList.add('wrong');
+                fbIcon.textContent = '🌀';
+                fbText.textContent = `❌ Неверно. ${st.explanation}`;
+            }
+
+            cardFlash.style.transition = '0.2s';
+            cardFlash.style.transform = 'scale(0.97)';
+            setTimeout(() => {
+                cardFlash.style.transform = 'scale(1)';
+            }, 150);
+        }
+
+        function goToNext() {
+            if (!isAnswered) return;
+
+            if (currentIndex < totalCount - 1) {
+                currentIndex++;
+                renderCard();
+            } else {
+                showFinalScreen();
+            }
+        }
+
+        function showFinalScreen() {
+            btnYes.disabled = true;
+            btnNo.disabled = true;
+            nextBtn.disabled = true;
+
+            statementText.innerHTML = `🎉 Ты — <span class="glow-text">Герой сервиса</span>!`;
+            topicTag.textContent = '🏆 Тренировка завершена';
+            progressCounter.textContent = `${totalCount} / ${totalCount}`;
+            illustrationEmoji.textContent = '🏆';
+
+            feedbackBubble.className = 'feedback-bubble correct';
+            fbIcon.textContent = '🚀';
+            fbText.innerHTML = 'Отлично! Ты прошёл все челленджи. <br> <span style="font-weight:400;">Нажми "Ещё раз" чтобы повторить.</span>';
+
+            nextBtn.innerHTML = `<span class="arrow">⟳</span> Ещё раз`;
+            nextBtn.disabled = false;
+            nextBtn.onclick = function resetAll() {
+                currentIndex = 0;
+                renderCard();
+                nextBtn.innerHTML = `<span class="arrow">➜</span> Следующий`;
+                nextBtn.onclick = goToNext;
+                cardFlash.style.transform = 'scale(1)';
+                btnYes.disabled = false;
+                btnNo.disabled = false;
+                isAnswered = false;
+                nextBtn.disabled = true;
+                feedbackBubble.className = 'feedback-bubble';
+                fbIcon.textContent = '💡';
+                fbText.textContent = 'Нажми Да или Нет';
+                illustrationEmoji.textContent = statements[0].emoji;
+            };
+        }
+
+        btnYes.addEventListener('click', function() {
+            handleChoice(true);
+        });
+
+        btnNo.addEventListener('click', function() {
+            handleChoice(false);
+        });
+
+        nextBtn.onclick = goToNext;
+
+        renderCard();
+    })();
+</script>
+
+</body>
+</html>
