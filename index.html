@@ -466,7 +466,7 @@
   </div>
 
   <div class="role-selector">
-    <label for="roleSelect">Категория оценивающего</label>
+    <label for="roleSelect">Выбери оценивающего</label>
     <select id="roleSelect">
       <option value="restaurants">Рестораны</option>
       <option value="tu">Территориальные управляющие</option>
@@ -484,68 +484,65 @@
         <li class="check-item"><span class="check-box"></span><span class="check-text">ARGM может зайти на платформу</span></li>
         <li class="check-item"><span class="check-box"></span><span class="check-text">SM и ниже — не может зайти на платформу</span></li>
         <li class="check-item"><span class="check-box"></span><span class="check-text">Выбор месяца активен</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Есть возможность выбрать в фильтрах Структура+1 (то есть посмотреть любой ресторан из состава своей территории)</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Проверить, что внести изменения в состав соседнего ресторана нельзя</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">Есть возможность выбрать в фильтрах «Структура+1» (посмотреть любой ресторан из состава своей территории)</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">Внести изменения в состав соседнего ресторана нельзя</span></li>
       </ul>
     </div>
     <div class="section">
-      <div class="section-title">Проверка корректности отображения данных на вкладке Структура</div>
+      <div class="section-title">Вкладка «Структура»</div>
       <ul class="checklist">
-        <li class="check-item"><span class="check-box"></span><span class="check-text">План по матрице — соответствует плановое количество людей в каждой должности, согласно People KPI</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Факт — фактическое количество людей в должности, данные из БОСС. Не считая «0» ставки</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Вакантно — План по матрице-Факт</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">FTR МНГ — Факт/План по матрице*100%, кратно выбранному месяцу</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Количество на обучении — количество сотрудников на обучении на следующую позицию (полностью соответствует вкладке «Обучение»)</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">FTR МНГ с учётом IT — (Факт+количество на обучении)/План по матрице*100%, где количество на обучении=Сотрудники, подходящие под условия: Пройдена Up-Оценка (не просрочена)+HiPo (не просрочена)+Начато обучение в Академии</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Факт по ставкам — фактическое количество людей в должности, кратно оформленной ставке (Например, в головах 3 JM, 1 из них на 2 из них на 1 ставке, 1 — на 0,5 ставке, итого будет Факт по ставкам 2,5)</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«План по матрице» — соответствует плановому количеству людей в каждой должности согласно People KPI</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«Факт» — фактическое количество людей в должности из БОСС (без «0» ставок)</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«Вакантно» — «План по матрице» − «Факт»</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«FTR МНГ» — «Факт» / «План по матрице» × 100% (кратно выбранному месяцу)</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«Количество на обучении» — соответствует вкладке «Обучение»</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«FTR МНГ с учётом IT» — («Факт» + «Количество на обучении») / «План по матрице» × 100%</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«Факт по ставкам» — фактическое количество людей в должности кратно оформленной ставке</span></li>
       </ul>
     </div>
     <div class="section">
-      <div class="section-title">Проверка корректности отображения данных на вкладке Обучение</div>
+      <div class="section-title">Вкладка «Обучение»</div>
       <ul class="checklist">
-        <li class="check-item"><span class="check-box"></span><span class="check-text">IT на должность — соответствует той должности, на которую проходит обучение сотрудник из академии (проверить, что все сотрудники, с пройденными Up-Оценками и HiPo и интервью, и начатым обучением в Академии находятся на этой вкладке)</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Начало обучения — дата назначения модуля из Академии</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Прогресс обучения — количество модулей со статусом «Пройдено» от всего модулей в программе обучения и %, может быть 0/1 или 1/1</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Школа Лидерства 1 — дата из Академии, когда завершена школа 1 — проверить соответствие даты</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Школа Лидерства 2 — дата из Академии, когда завершена школа 2 — проверить соответствие даты</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Школа РОСТ — дата прохождения Школы РОСТ — проверить соответствие даты</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Квалификация — дата и % когда проведен чек-лист Квалификации из Академии — проверить соответствие даты</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Сертификация — дата и % когда проведен чек-лист Сертификации из Академии — проверить соответствие даты</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«IT на должность» — соответствует должности, на которую проходит обучение в Академии</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«Начало обучения» — дата назначения модуля из Академии</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«Прогресс обучения» — количество модулей со статусом «Пройдено» от всего модулей в программе обучения (0/1 или 1/1)</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">Даты «Школы Лидерства 1», «Школы Лидерства 2» и «Школы РОСТ» соответствуют данным Академии</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">Дата и процент чек-листов «Квалификация» и «Сертификация» соответствуют Академии</span></li>
       </ul>
     </div>
     <div class="section">
-      <div class="section-title">Проверка корректности отображения данных на вкладке Кадровый резерв</div>
+      <div class="section-title">Вкладка «Кадровый резерв»</div>
       <ul class="checklist">
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Проверить, что в этом разделе есть все сотрудники, которые соответствуют условиям: пройдены этапы up-оценки и HiPo интервью и завершено обучение на следующую позицию</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Позиция — текущая должность из БОСС</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Роль на обучении — из Академии, та роль, на которую завершено обучение</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">HiPo Интервью — результат HiPo интервью</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Обучение завершено — Дата завершения обучения из Академии (присвоение сертификата, согласно следующей роли)</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">В разделе есть все сотрудники с пройденными Up-оценкой, HiPo-интервью и завершённым обучением на следующую позицию</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«Позиция» — соответствует текущей должности из БОСС</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«Роль на обучении» — соответствует роли из Академии, на которую завершено обучение</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«HiPo-интервью» — соответствует результату интервью</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«Обучение завершено» — соответствует дате завершения обучения в Академии (присвоение сертификата согласно следующей роли)</span></li>
       </ul>
     </div>
     <div class="section">
-      <div class="section-title">Проверка корректности отображения данных в разделе Продвижение МНГ</div>
+      <div class="section-title">Раздел «Продвижение МНГ»</div>
       <ul class="checklist">
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Проверить, что в этом разделе есть все действующие менеджеры ресторана и корректны данные по:</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Позиция — текущая роль из OneTime</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Up — оценка — дата, когда была проведена последняя Up-Оценка</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">HiPo интервью — дата, когда было проведено последнее интервью</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">GR Текущего периода — данные из раздела GR, согласно фиксации данных по периодам (только закрытые периоды, после 21 числа) — проверить соответствие с TeamUp</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">В «Продвижении МНГ» отображаются все действующие менеджеры ресторана и корректны данные</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«Позиция» — текущая роль из OneTime</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«Up-оценка» — дата последней Up-оценки</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«HiPo-интервью» — дата последнего интервью</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«G&R Текущего периода» — данные из раздела GR (только закрытые периоды, после 21 числа) — соответствие с TeamUp</span></li>
       </ul>
     </div>
     <div class="section">
-      <div class="section-title">Проверка корректности отображения данных в разделе Структура рядовых сотрудников</div>
+      <div class="section-title">Раздел «Структура рядовых сотрудников»</div>
       <ul class="checklist">
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Проверить, что в этом разделе есть все действующие сотрудники: Штатные и Услуги с гражданством ЕАЭС (Армения, Казахстан, Россия, Киргизия, Беларусь)</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Рядовые РФ — количество сотрудников, имеющих Гражданство — ЕАЭС, в том числе, из категории Услуги — проверить количество</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">18- — количество сотрудников, имеющих возраст &lt;18 лет — проверить количество</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">18+ — количество сотрудников, имеющих возраст &gt;18 лет — проверить количество</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Хочу развиваться — количество и % сотрудников, нажавших кнопку «хочу развиваться», где % считается как: Количество сотрудников, нажавших кнопку/количество всех рядовых сотрудников, у которых была возможность нажать кнопку «Хочу развиваться» (всех РФ (в том числе ЕАЭС)) — сверить с TeamUp</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Универсалы — количество сотрудников, у которых присвоены 4 сертификата из Академии: Кухня, Обслуживание, Цыпленок, Зал — Сверить количество и статус у конкретного человека с Академией</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Инструктора — количество сотрудников, у которых присвоен сертификат «Инструктор» из Академии — Сверить количество и статус у конкретного человека с Академией</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Проверить, что при нажатии кнопки «Скрыть отсутствующих» появляются все сотрудники в Декрете и в Армии из ресторана</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Проверить, что при нажатии кнопки «Только штатные» сотрудники становятся видны штатные сотрудники услуг с гражданством ЕАЭС (Армения, Казахстан, Россия, Киргизия, Беларусь), а сотрудники с иными гражданствами — не видны</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Проверить, что Сертификации по станциям у рядовых сотрудников соответствуют данным из академии — проверить каждого сотрудника</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">В структуре рядовых отображаются все действующие штатные сотрудники и «Услуги» с гражданством ЕАЭС (Армения, Казахстан, Россия, Киргизия, Беларусь)</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«Рядовые РФ» — количество сотрудников с гражданством ЕАЭС (включая «Услуги»)</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«18-» — количество сотрудников младше 18 лет</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«18+» — количество сотрудников старше 18 лет</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«Хочу развиваться» — количество и % (сверить с TeamUp)</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«Универсалы» — количество сотрудников с 4 сертификатами из Академии (Кухня, Обслуживание, Цыпленок, Зал) — сверить с Академией</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«Инструктора» — количество сотрудников с сертификатом «Инструктор» из Академии — сверить с Академией</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">При нажатии кнопки «Скрыть отсутствующих» появляются все сотрудники в Декрете и в Армии</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">При нажатии кнопки «Только штатные» видны только штатные с гражданством ЕАЭС</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">Сертификации по станциям соответствуют данным Академии для каждого сотрудника</span></li>
       </ul>
     </div>
   </div>
@@ -558,63 +555,62 @@
         <li class="check-item"><span class="check-box"></span><span class="check-text">Доступ есть</span></li>
         <li class="check-item"><span class="check-box"></span><span class="check-text">Актуальный состав ресторанов территории доступен</span></li>
         <li class="check-item"><span class="check-box"></span><span class="check-text">Выбор месяца активен</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Есть возможность выбрать в фильтрах Структура+1 (то есть посмотреть любую территорию из состава своего маркета)</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Проверить, что внести изменения в состав соседней территории нельзя</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">Есть возможность выбрать в фильтрах «Структура+1» (посмотреть любую территорию из состава своего маркета)</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">Внести изменения в состав соседней территории нельзя</span></li>
       </ul>
     </div>
     <div class="section">
-      <div class="section-title">Проверка корректности отображения данных на вкладке Структура</div>
+      <div class="section-title">Вкладка «Структура»</div>
       <ul class="checklist">
-        <li class="check-item"><span class="check-box"></span><span class="check-text">План по матрице — соответствует плановое количество людей в каждой должности, согласно People KPI</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Факт — фактическое количество людей в должности, данные из БОСС. Не считая «0» ставки</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Проверить, что активна кнопка посмотреть пофамильный список людей в Факте — фамилии соответствуют живым людям</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Вакантно — План по матрице-Факт</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">FTR МНГ — Факт/План по матрице*100%, кратно выбранному месяцу</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Количество на обучении — количество сотрудников на обучении на следующую позицию (полностью соответствует вкладке «Обучение»)</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">FTR МНГ с учётом IT — (Факт+количество на обучении)/План по матрице*100%, где количество на обучении=Сотрудники, подходящие под условия: Пройдена Up-Оценка (не просрочена)+HiPo (не просрочена)+Начато обучение в Академии</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Факт по ставкам — фактическое количество людей в должности, кратно оформленной ставке (Например, в головах 3 JM, 1 из них на 2 из них на 1 ставке, 1 — на 0,5 ставке, итого будет Факт по ставкам 2,5)</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«План по матрице» — соответствует People KPI</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«Факт» — данные из БОСС (без «0» ставок)</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">Активна кнопка просмотра пофамильного списка — фамилии соответствуют реальным людям</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«Вакантно» — «План по матрице» − «Факт»</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«FTR МНГ» — «Факт» / «План по матрице» × 100%</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«Количество на обучении» — соответствует вкладке «Обучение»</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«FTR МНГ с учётом IT» — («Факт» + «Количество на обучении») / «План по матрице» × 100%</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«Факт по ставкам» — с учётом оформленных ставок</span></li>
       </ul>
     </div>
     <div class="section">
-      <div class="section-title">Проверка корректности отображения данных на вкладке Обучение</div>
+      <div class="section-title">Вкладка «Обучение»</div>
       <ul class="checklist">
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Проверить, что в этом разделе есть все сотрудники, которые соответствуют условиям: пройдены этапы up-оценки и HiPo интервью и назначено обучение в Академии на должность</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">В разделе есть все сотрудники с пройденными Up-оценкой, HiPo-интервью и назначенным обучением в Академии</span></li>
       </ul>
     </div>
     <div class="section">
-      <div class="section-title">Проверка корректности отображения данных на вкладке Продвижение</div>
+      <div class="section-title">Вкладка «Продвижение»</div>
       <ul class="checklist">
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Проверить, что в этом разделе актуальность цифр по территории:</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Вакантно — количество открытых вакансий по каждой должности</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">План выбытия/риски — количество людей в должности из вкладки Структура-Планирование, которые были ручным форматом перенесены в одну из корзин (Выбытие, Декрет, Переводы вне территории)</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">КР — сотрудники и менеджеры ресторана, у которых пройдены этапы up-оценки и HiPo интервью и завершено обучение и сертификация на следующую позицию (то есть, ММС с пройденной Up-оценкой, HiPo, обучением, сертификацией на Product — это КР на Product)</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">На обучении (IT) — сотрудники и менеджеры ресторана, у которых пройдены этапы up-оценки и HiPo интервью и приступившие к обучению на следующую позицию, согласно треку обучения в Академии (то есть, ММС с пройденной Up-оценкой, HiPo, начатым в Академии обучением на Place — это IT Place)</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">«Хочу развиваться» — сотрудники ресторана, которые нажали кнопку «Хочу развиваться» (то есть, рядовой, нажавший кнопку, должен отображаться в категории «Хочу развиваться», в столбце «ММС»). Менеджеры с положительным статусом в Up-оценке</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Up — оценка — количество сотрудников и менеджеров с проведенными UP-оценками в текущей должности</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">HiPo интервью — количество сотрудников и менеджеров с проведенными HiPo интервью на следующую должность</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«Вакантно» — количество открытых вакансий по каждой должности</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«План выбытия/риски» — количество людей, перенесённых в корзины (Выбытие, Декрет, Переводы вне территории)</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«КР» — сотрудники с пройденными Up, HiPo, завершённым обучением и сертификацией на следующую позицию</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«На обучении (IT)» — сотрудники с пройденными Up, HiPo и начатым обучением в Академии</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«Хочу развиваться» — сотрудники, нажавшие кнопку (рядовые) + менеджеры с положительным статусом в Up-оценке</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«Up-оценка» — количество сотрудников и менеджеров с проведёнными Up-оценками</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">«HiPo-интервью» — количество сотрудников и менеджеров с проведёнными HiPo интервью</span></li>
       </ul>
     </div>
     <div class="section">
-      <div class="section-title">Проверка корректности отображения данных на вкладке Фактическая структура</div>
+      <div class="section-title">Вкладка «Фактическая структура»</div>
       <ul class="checklist">
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Проверить, что в этом разделе актуальность распределения менеджеров по ресторанам:</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Отметить, кто из МНГ в одной ячейки является Кадровым резервом, после этого проверить, что у ресторана он отобразился в разделе Кадровый резерв</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">Распределение менеджеров по ресторанам актуально</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">При отметке МНГ как кадрового резерва сотрудник отображается в разделе «Кадровый резерв»</span></li>
       </ul>
     </div>
     <div class="section">
-      <div class="section-title">Проверка корректности отображения данных на вкладке Планирование</div>
+      <div class="section-title">Вкладка «Планирование»</div>
       <ul class="checklist">
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Проверить, что в этом разделе актуальность распределения менеджеров по ресторанам — при старте соответствует фактической структуре</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Проверить, что работает перетаскивание на свободные вакансии</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Проверить, что в разделе Декреты — все МНГ территории из декрета</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Проверить, что после того, как ТУ сделал планирование периода, перешел на другую вкладку и вернулся обратно — изменения сохранились без кнопки сохранить</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">При старте планирования распределение соответствует фактической структуре</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">Работает перетаскивание на свободные вакансии</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">В разделе «Декреты» отображаются все МНГ территории в декрете</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">После перехода на другую вкладку и возврата изменения сохраняются без кнопки «Сохранить»</span></li>
       </ul>
     </div>
     <div class="section">
-      <div class="section-title">Проверка корректности отображения данных на вкладке Структура рядовых сотрудников территории</div>
+      <div class="section-title">Вкладка «Структура рядовых сотрудников территории»</div>
       <ul class="checklist">
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Проверить количество «Хочу развиваться» — соответствует количеству из TeamUp (только рядовые здесь)</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Проверить, что работает перетаскивание на свободные вакансии</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">Количество «Хочу развиваться» соответствует TeamUp</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">Перетаскивание на свободные вакансии работает</span></li>
       </ul>
     </div>
   </div>
@@ -628,190 +624,21 @@
         <li class="check-item"><span class="check-box"></span><span class="check-text">Актуальный состав ресторанов маркета доступен</span></li>
         <li class="check-item"><span class="check-box"></span><span class="check-text">Выбор месяца активен</span></li>
         <li class="check-item"><span class="check-box"></span><span class="check-text">Кнопка «Подтвердить план» в Планировании активна</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Есть возможность выбрать в фильтрах Структура+1 (то есть посмотреть любой маркет и ресторан из Дивизона)</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Проверить, что внести изменения нельзя в состав соседних маркетов</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">Есть возможность выбрать в фильтрах «Структура+1» (посмотреть любой маркет и ресторан из Дивизона)</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">Внести изменения в состав соседних маркетов нельзя</span></li>
       </ul>
     </div>
     <div class="section">
-      <div class="section-title">Проверка корректности данных, которые тянутся из БОСС</div>
+      <div class="section-title">Проверка данных из БОСС</div>
       <ul class="checklist">
         <li class="check-item"><span class="check-box"></span><span class="check-text">Соответствие структуры МНГ по каждому ресторану и дат назначения</span></li>
         <li class="check-item"><span class="check-box"></span><span class="check-text">Соответствие декретников по каждому ресторану</span></li>
         <li class="check-item"><span class="check-box"></span><span class="check-text">Соответствие ролей из OneTime по каждому ресторану</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Проверить соответствие структуры РФ сотрудников, ЕАЭС сотрудников данным из БОСС</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Проверить соответствие 18+ и 18- сотрудников с данными из БОСС</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">Соответствие структуры РФ сотрудников и ЕАЭС данным из БОСС</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">Соответствие 18+ и 18- сотрудников данным из БОСС</span></li>
       </ul>
     </div>
     <div class="section">
-      <div class="section-title">Проверка корректности данных, которые тянутся из TeamUp</div>
+      <div class="section-title">Проверка данных из TeamUp</div>
       <ul class="checklist">
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Соответствие количества в разделе Продвижение по статусам Хочу развиваться, Up-оценка, HiPo интервью с количеством таких статусов на TeamUp</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Проверить аналогично в структуре рядовых сотрудников</span></li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- ===== HRSM ===== -->
-  <div class="role-section" data-role="hrsm">
-    <div class="section">
-      <div class="section-title">Проверка доступа к платформе</div>
-      <ul class="checklist">
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Доступ есть</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Актуальный состав ресторанов маркета доступен</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Выбор месяца активен</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Кнопка «Подтвердить план» в Планировании активна</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Есть возможность выбрать в фильтрах Структура+1 (то есть посмотреть любой маркет и ресторан из Дивизона)</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Проверить, что внести изменения нельзя в состав соседних маркетов</span></li>
-      </ul>
-    </div>
-    <div class="section">
-      <div class="section-title">Проверка корректности данных, которые тянутся из Академии</div>
-      <ul class="checklist">
-        <li class="check-item"><span class="check-box"></span><span class="check-text">В структуре рядовых сотрудников проверить соответствие всех статусов и дат обучения: Модуль-дата</span></li>
-        <li class="check-item"><span class="check-box"></span><span class="check-text">В структуре рядовых проверить соответствие статуса Универсал и Инструктор — наличие сертификатов по всем 4-м модулям</span></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="action-row">
-    <button class="btn-primary" id="finishBtn">
-      <span class="btn-icon">☑</span> «Завершить оценку»
-    </button>
-    <button class="btn-secondary" id="resetBtn">
-      <span class="btn-icon">⟳</span> «Сбросить всё»
-    </button>
-  </div>
-
-</div>
-
-<!-- ===== POPUP ===== -->
-<div class="popup-overlay" id="popupOverlay">
-  <div class="popup">
-    <div class="popup-header">
-      <div class="popup-title">
-        Отклонения <span id="popupDeviationCount">0</span>
-      </div>
-      <button class="popup-close" id="popupClose">✕</button>
-    </div>
-    <div class="popup-body">
-      <ul class="popup-list" id="popupList">
-        <li class="ok">Все пункты выполнены. Отклонений нет.</li>
-      </ul>
-    </div>
-    <div class="popup-footer">
-      <button class="btn-secondary" id="popupCloseBtn">«Закрыть»</button>
-    </div>
-  </div>
-</div>
-
-<script>
-  (function() {
-    const roleSelect = document.getElementById('roleSelect');
-    const roleSections = document.querySelectorAll('.role-section');
-    const finishBtn = document.getElementById('finishBtn');
-    const resetBtn = document.getElementById('resetBtn');
-
-    const popupOverlay = document.getElementById('popupOverlay');
-    const popupList = document.getElementById('popupList');
-    const popupDeviationCount = document.getElementById('popupDeviationCount');
-    const popupClose = document.getElementById('popupClose');
-    const popupCloseBtn = document.getElementById('popupCloseBtn');
-
-    function setActiveRole(role) {
-      roleSections.forEach(section => {
-        section.classList.toggle('active', section.dataset.role === role);
-      });
-    }
-
-    roleSelect.addEventListener('change', function() {
-      setActiveRole(this.value);
-    });
-
-    document.querySelectorAll('.check-item').forEach(item => {
-      const box = item.querySelector('.check-box');
-      if (!box) return;
-
-      const toggle = () => {
-        box.classList.toggle('checked');
-        item.classList.toggle('checked');
-        box.textContent = box.classList.contains('checked') ? '✓' : '';
-      };
-
-      box.addEventListener('click', e => { e.stopPropagation(); toggle(); });
-      item.addEventListener('click', e => {
-        if (e.target.classList.contains('check-box')) return;
-        toggle();
-      });
-    });
-
-    resetBtn.addEventListener('click', function() {
-      document.querySelectorAll('.check-item').forEach(item => {
-        const box = item.querySelector('.check-box');
-        if (box) {
-          box.classList.remove('checked');
-          item.classList.remove('checked');
-          box.textContent = '';
-        }
-      });
-    });
-
-    function showPopup(deviations, total) {
-      popupList.innerHTML = '';
-      if (deviations.length === 0) {
-        popupList.innerHTML = '<li class="ok">Все пункты выполнены. Отклонений нет.</li>';
-        popupDeviationCount.textContent = '0';
-      } else {
-        popupDeviationCount.textContent = deviations.length;
-        deviations.forEach(d => {
-          const li = document.createElement('li');
-          li.className = 'deviation';
-          li.textContent = '⚠ ' + d;
-          popupList.appendChild(li);
-        });
-        const totalLi = document.createElement('li');
-        totalLi.className = 'ok';
-        totalLi.textContent = 'Выполнено ' + (total - deviations.length) + ' из ' + total;
-        popupList.appendChild(totalLi);
-      }
-      popupOverlay.classList.add('show');
-    }
-
-    function closePopup() {
-      popupOverlay.classList.remove('show');
-    }
-
-    popupClose.addEventListener('click', closePopup);
-    popupCloseBtn.addEventListener('click', closePopup);
-    popupOverlay.addEventListener('click', function(e) {
-      if (e.target === popupOverlay) closePopup();
-    });
-
-    finishBtn.addEventListener('click', function() {
-      const activeSection = document.querySelector('.role-section.active');
-      if (!activeSection) return;
-
-      const items = activeSection.querySelectorAll('.check-item');
-      const deviations = [];
-      let total = 0;
-
-      items.forEach(item => {
-        const box = item.querySelector('.check-box');
-        const label = item.innerText.trim();
-        if (!box) return;
-        total++;
-        const isChecked = box.classList.contains('checked');
-        if (!isChecked) {
-          deviations.push(label);
-        }
-      });
-
-      showPopup(deviations, total);
-    });
-
-    setActiveRole('restaurants');
-    roleSelect.value = 'restaurants';
-  })();
-</script>
-
-</body>
-</html>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">Соответствие количества в разделе «Прод
