@@ -641,4 +641,173 @@
     <div class="section">
       <div class="section-title">Проверка данных из TeamUp</div>
       <ul class="checklist">
-        <li class="check-item"><span class="check-box"></span><span class="check-text">Соответствие количества в разделе «Прод
+        <li class="check-item"><span class="check-box"></span><span class="check-text">Соответствие количества в разделе «Продвижение» по статусам «Хочу развиваться», «Up-оценка», «HiPo интервью» с количеством таких статусов на TeamUp</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">Аналогично в структуре рядовых сотрудников</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== HRSM ===== -->
+  <div class="role-section" data-role="hrsm">
+    <div class="section">
+      <div class="section-title">Проверка доступа к платформе</div>
+      <ul class="checklist">
+        <li class="check-item"><span class="check-box"></span><span class="check-text">Доступ есть</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">Актуальный состав ресторанов маркета доступен</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">Выбор месяца активен</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">Кнопка «Подтвердить план» в Планировании активна</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">Есть возможность выбрать в фильтрах «Структура+1» (посмотреть любой маркет и ресторан из Дивизона)</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">Внести изменения в состав соседних маркетов нельзя</span></li>
+      </ul>
+    </div>
+    <div class="section">
+      <div class="section-title">Проверка данных из Академии</div>
+      <ul class="checklist">
+        <li class="check-item"><span class="check-box"></span><span class="check-text">В структуре рядовых сотрудников проверить соответствие всех статусов и дат обучения: Модуль-дата</span></li>
+        <li class="check-item"><span class="check-box"></span><span class="check-text">В структуре рядовых проверить соответствие статуса «Универсал» и «Инструктор» — наличие сертификатов по всем 4-м модулям</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="action-row">
+    <button class="btn-primary" id="finishBtn">
+      <span class="btn-icon">☑</span> «Завершить оценку»
+    </button>
+    <button class="btn-secondary" id="resetBtn">
+      <span class="btn-icon">⟳</span> «Сбросить всё»
+    </button>
+  </div>
+
+</div>
+
+<!-- ===== POPUP ===== -->
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup">
+    <div class="popup-header">
+      <div class="popup-title">
+        Отклонения <span id="popupDeviationCount">0</span>
+      </div>
+      <button class="popup-close" id="popupClose">✕</button>
+    </div>
+    <div class="popup-body">
+      <ul class="popup-list" id="popupList">
+        <li class="ok">Все пункты выполнены. Отклонений нет.</li>
+      </ul>
+    </div>
+    <div class="popup-footer">
+      <button class="btn-secondary" id="popupCloseBtn">«Закрыть»</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const roleSelect = document.getElementById('roleSelect');
+    const roleSections = document.querySelectorAll('.role-section');
+    const finishBtn = document.getElementById('finishBtn');
+    const resetBtn = document.getElementById('resetBtn');
+
+    const popupOverlay = document.getElementById('popupOverlay');
+    const popupList = document.getElementById('popupList');
+    const popupDeviationCount = document.getElementById('popupDeviationCount');
+    const popupClose = document.getElementById('popupClose');
+    const popupCloseBtn = document.getElementById('popupCloseBtn');
+
+    function setActiveRole(role) {
+      roleSections.forEach(section => {
+        section.classList.toggle('active', section.dataset.role === role);
+      });
+    }
+
+    roleSelect.addEventListener('change', function() {
+      setActiveRole(this.value);
+    });
+
+    document.querySelectorAll('.check-item').forEach(item => {
+      const box = item.querySelector('.check-box');
+      if (!box) return;
+
+      const toggle = () => {
+        box.classList.toggle('checked');
+        item.classList.toggle('checked');
+        box.textContent = box.classList.contains('checked') ? '✓' : '';
+      };
+
+      box.addEventListener('click', e => { e.stopPropagation(); toggle(); });
+      item.addEventListener('click', e => {
+        if (e.target.classList.contains('check-box')) return;
+        toggle();
+      });
+    });
+
+    resetBtn.addEventListener('click', function() {
+      document.querySelectorAll('.check-item').forEach(item => {
+        const box = item.querySelector('.check-box');
+        if (box) {
+          box.classList.remove('checked');
+          item.classList.remove('checked');
+          box.textContent = '';
+        }
+      });
+    });
+
+    function showPopup(deviations, total) {
+      popupList.innerHTML = '';
+      if (deviations.length === 0) {
+        popupList.innerHTML = '<li class="ok">Все пункты выполнены. Отклонений нет.</li>';
+        popupDeviationCount.textContent = '0';
+      } else {
+        popupDeviationCount.textContent = deviations.length;
+        deviations.forEach(d => {
+          const li = document.createElement('li');
+          li.className = 'deviation';
+          li.textContent = '⚠ ' + d;
+          popupList.appendChild(li);
+        });
+        const totalLi = document.createElement('li');
+        totalLi.className = 'ok';
+        totalLi.textContent = 'Выполнено ' + (total - deviations.length) + ' из ' + total;
+        popupList.appendChild(totalLi);
+      }
+      popupOverlay.classList.add('show');
+    }
+
+    function closePopup() {
+      popupOverlay.classList.remove('show');
+    }
+
+    popupClose.addEventListener('click', closePopup);
+    popupCloseBtn.addEventListener('click', closePopup);
+    popupOverlay.addEventListener('click', function(e) {
+      if (e.target === popupOverlay) closePopup();
+    });
+
+    finishBtn.addEventListener('click', function() {
+      const activeSection = document.querySelector('.role-section.active');
+      if (!activeSection) return;
+
+      const items = activeSection.querySelectorAll('.check-item');
+      const deviations = [];
+      let total = 0;
+
+      items.forEach(item => {
+        const box = item.querySelector('.check-box');
+        const label = item.innerText.trim();
+        if (!box) return;
+        total++;
+        const isChecked = box.classList.contains('checked');
+        if (!isChecked) {
+          deviations.push(label);
+        }
+      });
+
+      showPopup(deviations, total);
+    });
+
+    setActiveRole('restaurants');
+    roleSelect.value = 'restaurants';
+  })();
+</script>
+
+</body>
+</html>
